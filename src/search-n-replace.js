@@ -7,13 +7,12 @@ if(typeof jQuery=='undefined') {
 			inputClasses: 'form-control',
 			dropdownId: 'columnSelect',
 			searchInputId: 'searchInput',
-			replaceInputId: 'replaceInput',
+			replaceInputId: 'replaceInput'
 		}
 		var settings = $.extend({}, defaults, options);
-	  
-		let self = $(this);
-		let columnHeader = self.find('thead tr td, thead tr th, tr th');
-		let columnList = [];
+		var self = $(this);
+		var columnHeader = self.find('thead tr td, thead tr th, tr th');
+		var columnList = [];
 		if(columnHeader.length > 0){
 			columnHeader.each((i,ele)=>{
 				columnList.push($(ele).text().trim())
@@ -21,7 +20,7 @@ if(typeof jQuery=='undefined') {
 		}
 		
 		self.before('<div class="row mb-2 wrapper"></div>')
-		let theWrapper = $('.wrapper')
+		var theWrapper = $('.wrapper')
 		theWrapper.append('<div class="col-md-4"><label>Search</label><input type="search" class="'+settings.inputClasses+'" id="'+settings.searchInputId+'" placeholder="Search For"/></div>');
 		theWrapper.append('<div class="col-md-4"><label>Replace</label><input class="'+settings.inputClasses+'" id="'+settings.replaceInputId+'" placeholder="Replace With"/></div>');
 		theWrapper.append('<div class="col-md-4"><label>Column to replace</label><select class="'+settings.inputClasses+'" id="'+settings.dropdownId+'"></select></div>');
@@ -34,9 +33,9 @@ if(typeof jQuery=='undefined') {
 		});
 
 		select.change(function() {
-			let selectself = $(this)
-			let index = selectself.val()
-			let rowcell, regexsearch, replacestring
+			var selectself = $(this)
+			var index = selectself.val()
+			var rowcell, regexsearch, replacestring
 			self.find('tbody tr').each(
 			  (i,item)=>{
 				rowcell = $(item).children('td').eq(index)
