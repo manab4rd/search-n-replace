@@ -18,6 +18,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify-es');
 
   // Default task(s).
-  grunt.registerTask('default', ['jslint','uglify']);
+  grunt.registerTask('default', ['uglify']);
 
 };
