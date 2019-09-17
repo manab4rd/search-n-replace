@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <title>Search And Replace in Table Columns</title>
+  </head>
+  <body>
+	  <main>
+		<section class="jumbotron text-center">
+			<div class="container">
+			  <h1 class="jumbotron-heading">Album example</h1>
+			  <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+			  <div class="input-group mb-3">
+				<input type="text" id="jsonInput" class="form-control" placeholder="The JSON url" value="http://demo9731375.mockable.io/cars">
+				  <div class="input-group-append">
+					<button class="btn btn-dark" type="button" id="button-addon2" onclick="CreateTableFromJSON('jsonInput')">Create Table From JSON</button>
+				  </div>
+			  </div>
+			</div>
+		  
+		</section>
+	</main>
+	<section class="container">
+		<div id="grid"></div>
+	</section>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="search-n-replace.js"></script>
+	<script>
+	
+		function CreateTableFromJSON(input) {
+    		var jsonPath = $('#'+input).val()
+        var grid = $("#grid")
+        grid.html("")
+        fetch(jsonPath)
+        .then(response=> {
+            if (response.status >= 200 && response.status < 300) {
+                return Promise.resolve(response)
+            } else {
+                return Promise.reject(new Error(response.statusText))
+            }
+        })
+        .then(response=> {
+            return response.json()
+        })
+        .then(data => {
+            return buildTable(data);
+            //return data;
+        })
+        .then(table => {
+             $(table).column_search_replace();
+        })
+        .catch(function (error) {
+            console.log('Request failed', error);
+        });
+
+var buildTable = function(data){
+				var col = [];
+        for (var i = 0; i < data.length; i++) {
+            for (var key in data[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.append(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < data.length; i++) {
+            tr = table.insertRow(-1);
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = data[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        $(table).addClass('table table-sm table-bordered')
+        grid.append(table);
+        return(table)
+    }
+}
+
+	</script>
+  </body>
+</html>
