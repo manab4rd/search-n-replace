@@ -5,21 +5,52 @@
     <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
   </head>
   <body>
+  <table>
+	<thead>
+		<tr><td>Column1</td>
+		<td>Column2</td></tr>
+	</thead>
+	<tbody>
+		<tr><td>cat</td><td>fish, milk</td></tr>
+		<tr><td>dog</td><td>meat, milk</td></tr>
+		<tr><td>catlover</td><td>food</td></tr>
+		<tr><td>cow</td><td>grass</td></tr>
+		<tr><td>cat lover</td><td>food, drinks</td></tr>
+		<tr><td>rat</td><td>rat food</td></tr>
+		<tr><td>fish</td><td>fish-food</td></tr>
+	</tbody>
+	</table>
     <div id="mocha"></div>
     <script src="../node_modules/mocha/mocha.js"></script>
     <script src="../node_modules/chai/chai.js"></script>
+	<script src="../node_modules/chai-dom/chai-dom.js"></script>
     
     <script>mocha.setup('bdd')</script>
-    <script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="../src/search-n-replace.js"></script> 
     <script>
         var assert = chai.assert;
+		var expect = chai.expect;
 
         describe('check jQuery', function() {
             it('jQuery should defined', function() {
                 assert.isDefined($, "jQuery is defined");
             });
         });
+		
+		describe("jQuery.fn.inspect", function(){
+		  it("Check If the table exist", function(){
+			expect($('table')).to.exist;
+		  });
+		  $('table').column_search_replace();
+		  it("Check If two inputs fields are there", function(){
+			expect($('table').parent().find('input')).to.have.length(2)
+		  });
+		  it("Check If one select fields is there", function(){
+			expect($('table').parent().find('select')).to.have.length(1)
+		  });
+		});
+		
     </script>
     <script>
       mocha.run();

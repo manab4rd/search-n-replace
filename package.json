@@ -28,5 +28,7 @@
     "grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
     "mocha": "^6.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chai-dom": "^1.8.1"
+  }
 }
