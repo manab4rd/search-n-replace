@@ -3,6 +3,7 @@ if(typeof jQuery=='undefined') {
 }else{
 	
 	$.fn.column_search_replace = function(options){
+		//the default values setup
 		var defaults = {
 			inputClasses: 'form-control',
 			dropdownId: 'columnSelect',
@@ -13,12 +14,13 @@ if(typeof jQuery=='undefined') {
 		var self = $(this);
 		var columnHeader = self.find('thead tr td, thead tr th, tr th');
 		var columnList = [];
+		//building the array of column header to show in dropdown
 		if(columnHeader.length > 0){
 			columnHeader.each((i,ele)=>{
 				columnList.push($(ele).text().trim())
 			})
 		}
-		
+		//building the search panel
 		self.before('<div class="row mb-2 wrapper"></div>')
 		var theWrapper = $('.wrapper')
 		theWrapper.append('<div class="col-md-4"><label>Search</label><input type="search" class="'+settings.inputClasses+'" id="'+settings.searchInputId+'" placeholder="Search For"/></div>');
@@ -31,8 +33,8 @@ if(typeof jQuery=='undefined') {
 		$.each(columnList, (i, p)=>{
 		  select.append($('<option></option>').val(i).html(p));
 		});
-
-		select.change(function() {
+		//catching the change event and replacing the content
+		select.change(()=> {
 			var selectself = $(this)
 			var index = selectself.val()
 			var rowcell, regexsearch, replacestring

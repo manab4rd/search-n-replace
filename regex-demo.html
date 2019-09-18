@@ -33,13 +33,14 @@
 						<tr><td>cow</td><td>grass</td></tr>
 						<tr><td>cat lover</td><td>food, drinks</td></tr>
 						<tr><td>rat</td><td>rat food</td></tr>
-						<tr><td>fish</td><td>fish-food</td></tr>
+						<tr><td>fish</td><td>fishfood</td></tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
 		<div class="col-6">
 		<link rel="stylesheet" href="node_modules/mocha/mocha.css">
+		<button id="fire" class="btn btn-block btn-warning btn-lg">Run the Script on the table</button>
 		<div id="mocha" class="bg-light p-3"></div>
 		
 		</div>
@@ -49,13 +50,14 @@
 	<script src="search-n-replace.min.js"></script>
 	
 	<!-- commenting this out as we are running it via mocha test cases-->
-	<!--
+	
 	<script>
-		$(document).ready(function(){
+		$('#fire').on('click', function(){
 			$('table').column_search_replace();
+			mocha.run();
 		})
 	</script>
-	-->
+	
 
 	<!--this is the code for unite test-->
 	<script src="node_modules/mocha/mocha.js"></script>
@@ -63,6 +65,5 @@
 	<script src="node_modules/chai-dom/chai-dom.js"></script>
 	<script>mocha.setup('bdd')</script>
 	<script src="test/test-cases.js"></script>
-	<script>mocha.run();</script>
   </body>
 </html>

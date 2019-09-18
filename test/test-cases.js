@@ -11,7 +11,7 @@ var assert = chai.assert;
 		  it("Check If the table exist", function(){
 			expect($('table')).to.exist;
 		  });
-		  $('table').column_search_replace();
+		  
 		  it("Check If two inputs fields are there", function(){
 			expect($('table').parent().find('input')).to.have.length(2)
 		  });

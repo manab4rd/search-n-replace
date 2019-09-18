@@ -1,6 +1,6 @@
 # search-n-replace.js
 
-This script is a extension to jQuery Library.
+This script is a extension to jQuery Library. It supports RegEx to search and replace each row in a particular column.
 
 ## Problem Statement
 
@@ -21,6 +21,9 @@ It will automatically generate the select box with the column names of the given
 
 ***Search*** for a particular String --> Put the ***Replace*** string --> Select the ***Column Name*** you want to replace.
 
+## Installation
+Simple way: Download the zip package and open the *index.html* file in any browser
+Developer way: Download the package and host in some local server.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
