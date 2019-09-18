@@ -23,7 +23,12 @@ It will automatically generate the select box with the column names of the given
 
 ## Installation
 Simple way: Download the zip package and open the *index.html* file in any browser
-Developer way: Download the package and host in some local server.
+Developer way: 
+Download/Clone the package
+```j
+npm install
+```
+Host in some local server.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

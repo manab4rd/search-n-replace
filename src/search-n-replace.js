@@ -34,7 +34,7 @@ if(typeof jQuery=='undefined') {
 		  select.append($('<option></option>').val(i).html(p));
 		});
 		//catching the change event and replacing the content
-		select.change(()=> {
+		select.change(function() {
 			var selectself = $(this)
 			var index = selectself.val()
 			var rowcell, regexsearch, replacestring
