@@ -23,6 +23,7 @@ It will automatically generate the select box with the column names of the given
 
 ## Installation
 Simple way: Download the zip package and open the *index.html* file in any browser
+
 Developer way: 
 Download/Clone the package
 ```j
