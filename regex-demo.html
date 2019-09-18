@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+
+    <title>Search And Replace in Table Columns</title>
+  </head>
+  <body>
+  <p class="text-center mt-3">
+		<a  class="btn btn-outline-primary" href="index.html"> Back to home</a>
+  </p>
+  <h2 class="my-3 text-center">We can use <mark>Regex</mark> to Search field to filter content of our choice.</h2>
+  
+	<section class="container">
+	<div class="row">
+		<div class="col-6 card">
+			<div class="card-body">
+				<p>Example : if we want search for all the <strong class="text-primary">cat</strong> which is not a substring of another string, we can search like <mark>\bcat\b</mark>. This will not replace <strong class="text-primary">catlover</strong></p>
+				<table class="table">
+					<thead>
+						<tr><th>Animal</th>
+						<th>Food</th></tr>
+					</thead>
+					<tbody>
+						<tr><td>cat</td><td>fish, milk</td></tr>
+						<tr><td>dog</td><td>meat, milk</td></tr>
+						<tr><td>catlover</td><td>food</td></tr>
+						<tr><td>cow</td><td>grass</td></tr>
+						<tr><td>cat lover</td><td>food, drinks</td></tr>
+						<tr><td>rat</td><td>rat food</td></tr>
+						<tr><td>fish</td><td>fish-food</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-6">
+		<link rel="stylesheet" href="node_modules/mocha/mocha.css">
+		<div id="mocha" class="bg-light p-3"></div>
+		
+		</div>
+	</div>
+	</section>
+	<script src="http://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script src="search-n-replace.min.js"></script>
+	
+	<!-- commenting this out as we are running it via mocha test cases-->
+	<!--
+	<script>
+		$(document).ready(function(){
+			$('table').column_search_replace();
+		})
+	</script>
+	-->
+
+	<!--this is the code for unite test-->
+	<script src="node_modules/mocha/mocha.js"></script>
+	<script src="node_modules/chai/chai.js"></script>
+	<script src="node_modules/chai-dom/chai-dom.js"></script>
+	<script>mocha.setup('bdd')</script>
+	<script src="test/test-cases.js"></script>
+	<script>mocha.run();</script>
+  </body>
+</html>
